@@ -1,4 +1,5 @@
 
+import menu.Menu_Makanan;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,12 +12,9 @@ import javax.swing.JFrame;
  *
  * @author fauzanramadhana
  */
-public class menu_Makanan extends javax.swing.JFrame {
+public class Main_Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form menu_Makanan
-     */
-    public menu_Makanan() {
+    public Main_Menu() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         execute();
@@ -38,10 +36,13 @@ public class menu_Makanan extends javax.swing.JFrame {
         pn_menu = new javax.swing.JPanel();
         pn_content = new javax.swing.JPanel();
         pn_utama = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pn_header.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -89,27 +90,7 @@ public class menu_Makanan extends javax.swing.JFrame {
 
         getContentPane().add(pn_sideBar, java.awt.BorderLayout.LINE_START);
 
-        pn_utama.setLayout(new java.awt.BorderLayout());
-
-        jTable1.setForeground(new java.awt.Color(149, 0, 6));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", "Ayam Serundeng", "25.000", "100"},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nama Makanan", "Harga", "Stok"
-            }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable1.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(jTable1);
-
-        pn_utama.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        pn_utama.setLayout(new javax.swing.BoxLayout(pn_utama, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout pn_contentLayout = new javax.swing.GroupLayout(pn_content);
         pn_content.setLayout(pn_contentLayout);
@@ -128,6 +109,12 @@ public class menu_Makanan extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        pn_utama.add(new Menu_Makanan());
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -145,27 +132,26 @@ public class menu_Makanan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu_Makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu_Makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu_Makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu_Makanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new menu_Makanan().setVisible(true);
+            new Main_Menu().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_header;
     private javax.swing.JPanel pn_menu;

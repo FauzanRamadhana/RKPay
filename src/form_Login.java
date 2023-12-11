@@ -1,4 +1,5 @@
 
+import koneksi.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -172,7 +173,7 @@ public class form_Login extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-        menu_Makanan mm = new menu_Makanan();
+        Main_Menu mm = new Main_Menu();
         mm.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -1,4 +1,5 @@
 
+import koneksi.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -236,7 +237,7 @@ public class form_Daftar extends javax.swing.JFrame {
         if (password.equals(confirmPassword)) {
             try {
                 Connection conn = Koneksi.getConnection();
-                String sql = "INSERT INTO users (nama, phone, password,role) VALUES (?, ?, ?,?)";
+                String sql = "INSERT INTO users (nama, telepon, password,role) VALUES (?, ?, ?,?)";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, nama);
                 stmt.setString(2, phone);
@@ -246,6 +247,10 @@ public class form_Daftar extends javax.swing.JFrame {
                 int i = stmt.executeUpdate();
                 if (i > 0) {
                     JOptionPane.showMessageDialog(null, "Data berhasil dikirim!");
+                    form_Login fl = new form_Login();
+                    form_Daftar fd = new form_Daftar();
+                    fl.setVisible(true);
+                    fd.dispose();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
