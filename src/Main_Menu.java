@@ -16,7 +16,7 @@ public class Main_Menu extends javax.swing.JFrame {
 
     public Main_Menu() {
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         execute();
     }
 
