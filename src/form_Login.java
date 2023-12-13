@@ -1,9 +1,12 @@
 
+import java.awt.Component;
+import java.awt.Window;
 import koneksi.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -166,15 +169,17 @@ public class form_Login extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Berhasil login!");
-                // Anda bisa menambahkan kode untuk beralih ke halaman lain setelah login berhasil
+                Main_Menu mm = new Main_Menu();
+                Window currentWindow = SwingUtilities.windowForComponent((Component) evt.getSource());
+                currentWindow.dispose();
+
+                mm.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Nama atau password salah!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-        Main_Menu mm = new Main_Menu();
-        mm.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void logPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logPassActionPerformed
@@ -183,6 +188,10 @@ public class form_Login extends javax.swing.JFrame {
 
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         form_Daftar fd = new form_Daftar();
+
+        Window currentWindow = SwingUtilities.windowForComponent((Component) evt.getSource());
+        currentWindow.dispose();
+
         fd.setVisible(true);
     }//GEN-LAST:event_btnRegisActionPerformed
 

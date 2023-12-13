@@ -1,8 +1,11 @@
 
+import java.awt.Component;
+import java.awt.Window;
 import koneksi.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -248,9 +251,10 @@ public class form_Daftar extends javax.swing.JFrame {
                 if (i > 0) {
                     JOptionPane.showMessageDialog(null, "Data berhasil dikirim!");
                     form_Login fl = new form_Login();
-                    form_Daftar fd = new form_Daftar();
+                    Window currentWindow = SwingUtilities.windowForComponent((Component) evt.getSource());
+                    currentWindow.dispose();
+
                     fl.setVisible(true);
-                    fd.dispose();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
@@ -262,6 +266,10 @@ public class form_Daftar extends javax.swing.JFrame {
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
         form_Login fl = new form_Login();
+
+        Window currentWindow = SwingUtilities.windowForComponent((Component) evt.getSource());
+        currentWindow.dispose();
+
         fl.setVisible(true);
     }//GEN-LAST:event_btnMasukActionPerformed
 
