@@ -177,6 +177,8 @@ public class Main_Menu extends javax.swing.JFrame {
         MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", null);
 
         addMenu(beranda, menu, transaksi, laporan, logout);
+        
+        
     }
 
     private void addMenu(MenuItem... menu) {

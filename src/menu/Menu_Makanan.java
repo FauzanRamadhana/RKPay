@@ -67,7 +67,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         tvHarga = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tvKategori = new javax.swing.JComboBox<>();
+        tvKategori = new javax.swing.JTextField();
         PerbaruiMenu = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnPerbarui = new javax.swing.JButton();
@@ -115,14 +115,14 @@ public class Menu_Makanan extends javax.swing.JPanel {
             .addGroup(DataMenuMakananLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DataMenuMakananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(DataMenuMakananLayout.createSequentialGroup()
                         .addComponent(btnTambah)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDelete))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(218, Short.MAX_VALUE))
+                        .addComponent(btnDelete)))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         DataMenuMakananLayout.setVerticalGroup(
             DataMenuMakananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +195,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
 
         jLabel4.setText("Kategori");
 
-        tvKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Minuman" }));
+        tvKategori.setText("Makanan");
         tvKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tvKategoriActionPerformed(evt);
@@ -207,17 +207,17 @@ public class Menu_Makanan extends javax.swing.JPanel {
         TambahMenuLayout.setHorizontalGroup(
             TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TambahMenuLayout.createSequentialGroup()
-                .addGroup(TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tvNama, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tvStok, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(tvHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(tvKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tvNama, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tvStok, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tvHarga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tvKategori, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE))
+                .addGap(0, 96, Short.MAX_VALUE))
         );
         TambahMenuLayout.setVerticalGroup(
             TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +238,9 @@ public class Menu_Makanan extends javax.swing.JPanel {
                 .addComponent(tvHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tvKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         MainPanel.add(TambahMenu, "card3");
@@ -313,24 +313,23 @@ public class Menu_Makanan extends javax.swing.JPanel {
         PerbaruiMenuLayout.setHorizontalGroup(
             PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PerbaruiMenuLayout.createSequentialGroup()
-                .addGroup(PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tvNama1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tvNama1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                     .addComponent(jLabel5)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tvStok1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tvStok1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addComponent(tvHarga1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tvHarga1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                     .addComponent(jLabel8)
-                    .addComponent(tvId, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tvId))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         PerbaruiMenuLayout.setVerticalGroup(
             PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PerbaruiMenuLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tvId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,7 +345,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tvHarga1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         MainPanel.add(PerbaruiMenu, "card3");
@@ -384,7 +383,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
         String nama = tvNama.getText();
         int stok = Integer.parseInt(tvStok.getText());
         int harga = Integer.parseInt(tvHarga.getText());
-        String kategori = (String) tvKategori.getSelectedItem();
+        String kategori = (String) tvKategori.getText();
 
         if (nama.equals("") || stok == 0 || harga == 0 || kategori.equals("")) {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -402,10 +401,6 @@ public class Menu_Makanan extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
-
-    private void tvKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvKategoriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tvKategoriActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int selectedRow = dataMakanan.getSelectedRow();
@@ -482,6 +477,10 @@ public class Menu_Makanan extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void tvKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvKategoriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tvKategoriActionPerformed
+
     public void loadData() {
         table.getDataVector().removeAllElements();
         table.fireTableDataChanged();
@@ -515,7 +514,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
     private javax.swing.JTextField tvHarga;
     private javax.swing.JTextField tvHarga1;
     private javax.swing.JTextField tvId;
-    private javax.swing.JComboBox<String> tvKategori;
+    private javax.swing.JTextField tvKategori;
     private javax.swing.JTextField tvNama;
     private javax.swing.JTextField tvNama1;
     private javax.swing.JTextField tvStok;
