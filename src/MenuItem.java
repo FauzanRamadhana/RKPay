@@ -13,7 +13,7 @@ import javax.swing.Icon;
  * @author fauzanramadhana
  */
 public class MenuItem extends javax.swing.JPanel {
-
+    
     private final ArrayList<MenuItem> subMenu = new ArrayList<>();
     private ActionListener act;
 
@@ -29,24 +29,24 @@ public class MenuItem extends javax.swing.JPanel {
      */
     public MenuItem(Icon icon, boolean sbm, Icon iconSub, String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
-
+        
         lb_icon.setIcon(icon);
         lb_menuName.setText(menuName);
         lb_iconSub.setIcon(iconSub);
         lb_iconSub.setVisible(sbm);
-
+        
         if (act != null) {
             this.act = act;
         }
         this.setSize(new Dimension(Integer.MAX_VALUE, 45));
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 45));
-        this.setMinimumSize(new Dimension(Integer.MIN_VALUE, 45));
-
-        for (MenuItem subMenu1 : subMenu) {
-            this.subMenu.add(subMenu1);
-            subMenu1.setVisible(false);
+        this.setMinimumSize(new Dimension(Integer.MAX_VALUE, 45));
+        
+        for (int i = 0; i < subMenu.length; i++) {
+            this.subMenu.add(subMenu[i]);
+            subMenu[i].setVisible(false);
         }
-    }
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,11 +103,11 @@ public class MenuItem extends javax.swing.JPanel {
     private void lb_iconSubMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_iconSubMousePressed
 
     }//GEN-LAST:event_lb_iconSubMousePressed
-
+    
     private boolean showing = false;
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
-        setBackground(new java.awt.Color(255, 255, 255));
+//        setBackground(new java.awt.Color(255, 255, 255));
         if (showing) {
             hideMenu();
         } else {
@@ -131,33 +131,42 @@ public class MenuItem extends javax.swing.JPanel {
     public ArrayList<MenuItem> getSubMenu() {
         return subMenu;
     }
-
+    
     private void hideMenu() {
-        new Thread(() -> {
-            for (int i = subMenu.size() - 1; i >= 0; i--) {
-                sleep();
-                subMenu.get(i).setVisible(false);
-                subMenu.get(i).hideMenu();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = subMenu.size() - 1; i >= 0; i--) {
+                    sleep();
+                    subMenu.get(i).setVisible(false);
+                    subMenu.get(i).hideMenu();
+                }
+                getParent().repaint();
+                getParent().revalidate();
+                showing = false;
             }
         }).start();
     }
-
+    
     private void showMenu() {
-        new Thread(() -> {
-            for (int i = 0; i < subMenu.size(); i++) {
-                sleep();
-                subMenu.get(i).setVisible(false);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < subMenu.size(); i++) {
+                    sleep();
+                    subMenu.get(i).setVisible(true);
+                }
+                showing = true;
+                getParent().repaint();
+                getParent().revalidate();
             }
-            showing = true;
-            getParent().repaint();
-            getParent().revalidate();
         }).start();
     }
-
+    
     private void sleep() {
         try {
             Thread.sleep(20);
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
         }
     }
     

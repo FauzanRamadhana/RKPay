@@ -1,8 +1,12 @@
 
+import Transaksi.Transaksi;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import menu.Menu_Makanan;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import menu.Menu_Minuman;
 
 /*
@@ -111,9 +115,7 @@ public class Main_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        pn_utama.add(new Menu_Minuman());
-        pn_utama.repaint();
-        pn_utama.revalidate();
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -168,18 +170,52 @@ public class Main_Menu extends javax.swing.JFrame {
         ImageIcon iconLogout = new ImageIcon(getClass().getResource("/image/logout.png"));
         ImageIcon iconSub = new ImageIcon(getClass().getResource("/image/subIcon.png"));
 
-        MenuItem makanan = new MenuItem(null, true, iconSub, "Makanan", null);
-        MenuItem minuman = new MenuItem(null, true, iconSub, "Minuman", null);
+        MenuItem makanan = new MenuItem(null, true, iconSub, "Makanan", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Menu_Makanan());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
+        MenuItem minuman = new MenuItem(null, true, iconSub, "Minuman", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Menu_Minuman());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
 
         MenuItem beranda = new MenuItem(iconBeranda, false, null, "Beranda", null);
-        MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null,makanan,minuman);
-        MenuItem transaksi = new MenuItem(iconTransaksi, false, null, "Transaksi", null);
+        MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null, makanan, minuman);
+        MenuItem transaksi = new MenuItem(iconTransaksi, false, null, "Transaksi", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Transaksi());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
         MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", null);
-        MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", null);
+        MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int option = JOptionPane.showConfirmDialog(
+                        null,
+                        "Apakah Anda yakin ingin keluar?",
+                        "Konfirmasi Keluar",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                // Check user's choice
+                if (option == JOptionPane.YES_OPTION) {
+
+                    handleLogoutOrExit();
+                }
+            }
+
+            private void handleLogoutOrExit() {
+                System.exit(0);
+            }
+        });
 
         addMenu(beranda, menu, transaksi, laporan, logout);
-        
-        
+
     }
 
     private void addMenu(MenuItem... menu) {
