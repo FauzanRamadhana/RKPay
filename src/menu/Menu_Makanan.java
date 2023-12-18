@@ -195,6 +195,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
 
         jLabel4.setText("Kategori");
 
+        tvKategori.setEditable(false);
         tvKategori.setText("Makanan");
         tvKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

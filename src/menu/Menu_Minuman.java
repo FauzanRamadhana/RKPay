@@ -4,17 +4,33 @@
  */
 package menu;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Minuman;
+
 /**
  *
  * @author fauzanramadhana
  */
 public class Menu_Minuman extends javax.swing.JPanel {
+    
+    private DefaultTableModel table;
+    private Minuman mnm = new Minuman();
 
     /**
      * Creates new form Menu_Minuman
      */
     public Menu_Minuman() {
         initComponents();
+        table = new DefaultTableModel();
+        DataMinuman.setModel(table);
+
+        table.addColumn("Id");
+        table.addColumn("Nama");
+        table.addColumn("Kategori");
+        table.addColumn("Stok");
+        table.addColumn("Harga");
+        loadData();
     }
 
     /**
@@ -40,25 +56,25 @@ public class Menu_Minuman extends javax.swing.JPanel {
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tvNama = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tvStok = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tvHarga = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tvKategori = new javax.swing.JTextField();
         PerbaruiMenu = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnPerbarui = new javax.swing.JButton();
         btnBatal1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tvId = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        tvNama1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tvStok1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        tvHarga1 = new javax.swing.JTextField();
 
         jButton2.setText("jButton2");
 
@@ -70,10 +86,25 @@ public class Menu_Minuman extends javax.swing.JPanel {
         MainPanel.setLayout(new java.awt.CardLayout());
 
         btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         DataMinuman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,8 +151,18 @@ public class Menu_Minuman extends javax.swing.JPanel {
         MainPanel.add(DataMenuMinuman, "card2");
 
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,36 +186,37 @@ public class Menu_Minuman extends javax.swing.JPanel {
 
         jLabel2.setText("Nama Minuman");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tvNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tvNamaActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Stok");
 
-        jTextField2.setText("0");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tvStok.setText("0");
+        tvStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tvStokActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Harga");
 
-        jTextField3.setText("0");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tvHarga.setText("0");
+        tvHarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                tvHargaActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Kategori");
 
-        jTextField4.setText("Minuman");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        tvKategori.setEditable(false);
+        tvKategori.setText("Minuman");
+        tvKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                tvKategoriActionPerformed(evt);
             }
         });
 
@@ -182,9 +224,9 @@ public class Menu_Minuman extends javax.swing.JPanel {
         TambahMenu.setLayout(TambahMenuLayout);
         TambahMenuLayout.setHorizontalGroup(
             TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1)
-            .addComponent(jTextField2)
-            .addComponent(jTextField3)
+            .addComponent(tvNama)
+            .addComponent(tvStok)
+            .addComponent(tvHarga)
             .addGroup(TambahMenuLayout.createSequentialGroup()
                 .addGroup(TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +235,7 @@ public class Menu_Minuman extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(0, 559, Short.MAX_VALUE))
-            .addComponent(jTextField4)
+            .addComponent(tvKategori)
         );
         TambahMenuLayout.setVerticalGroup(
             TambahMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,19 +245,19 @@ public class Menu_Minuman extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 206, Short.MAX_VALUE))
         );
 
@@ -255,16 +297,16 @@ public class Menu_Minuman extends javax.swing.JPanel {
 
         jLabel8.setText("Stok");
 
-        jTextField7.setText("0");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        tvStok1.setText("0");
+        tvStok1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                tvStok1ActionPerformed(evt);
             }
         });
 
         jLabel9.setText("Harga");
 
-        jTextField8.setText("0");
+        tvHarga1.setText("0");
 
         javax.swing.GroupLayout PerbaruiMenuLayout = new javax.swing.GroupLayout(PerbaruiMenu);
         PerbaruiMenu.setLayout(PerbaruiMenuLayout);
@@ -272,15 +314,15 @@ public class Menu_Minuman extends javax.swing.JPanel {
             PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PerbaruiMenuLayout.createSequentialGroup()
                 .addGroup(PerbaruiMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tvHarga1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                    .addComponent(tvStok1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tvNama1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(tvId, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(0, 96, Short.MAX_VALUE))
         );
         PerbaruiMenuLayout.setVerticalGroup(
@@ -291,19 +333,19 @@ public class Menu_Minuman extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvNama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvStok1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tvHarga1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(206, Short.MAX_VALUE))
         );
 
@@ -312,30 +354,125 @@ public class Menu_Minuman extends javax.swing.JPanel {
         add(MainPanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tvNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvNamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tvNamaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tvStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvStokActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tvStokActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tvHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvHargaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tvHargaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void tvKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvKategoriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_tvKategoriActionPerformed
 
     private void btnPerbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerbaruiActionPerformed
-        // TODO add your handling code here:
+        String nama = tvNama1.getText();
+        int stok = Integer.parseInt(tvStok1.getText());
+        int harga = Integer.parseInt(tvHarga1.getText());
+        int id = Integer.parseInt(tvId.getText());
+        int i = mnm.updateData(nama, stok, harga, id);
+            if (i > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
+                MainPanel.removeAll();
+                MainPanel.repaint();
+                MainPanel.revalidate();
+                MainPanel.add(DataMenuMinuman);
+                MainPanel.repaint();
+                MainPanel.revalidate();
+                loadData();
+            }
     }//GEN-LAST:event_btnPerbaruiActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void tvStok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvStok1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_tvStok1ActionPerformed
 
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        MainPanel.removeAll();
+        MainPanel.repaint();
+        MainPanel.revalidate();
+        tvNama.setText("");
+        tvStok.setText("0");
+        tvHarga.setText("0");
+        MainPanel.add(TambahMenu);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+    }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        int selectedRow = DataMinuman.getSelectedRow();
+        if (selectedRow != -1) {
+            MainPanel.removeAll();
+            MainPanel.repaint();
+            MainPanel.revalidate();
+            MainPanel.add(PerbaruiMenu);
+            MainPanel.repaint();
+            MainPanel.revalidate();
+            tvId.setText(String.valueOf(DataMinuman.getValueAt(selectedRow, 0)));
+            tvNama1.setText(String.valueOf(DataMinuman.getValueAt(selectedRow, 1)));
+            tvStok1.setText(String.valueOf(DataMinuman.getValueAt(selectedRow, 3)));  
+            tvHarga1.setText(String.valueOf(DataMinuman.getValueAt(selectedRow, 4)));
+        } else {
+            JOptionPane.showMessageDialog(null, "Pilih data yang akan diperbarui!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        MainPanel.removeAll();
+        MainPanel.repaint();
+        MainPanel.revalidate();
+        MainPanel.add(DataMenuMinuman);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+        loadData();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        String nama = tvNama.getText();
+        int stok = Integer.parseInt(tvStok.getText());
+        int harga = Integer.parseInt(tvHarga.getText());
+        String kategori = (String) tvKategori.getText();
+
+        if (nama.equals("") || stok == 0 || harga == 0 || kategori.equals("")) {
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int i = mnm.addData(nama, stok, harga, kategori);
+            if (i > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+                MainPanel.removeAll();
+                MainPanel.repaint();
+                MainPanel.revalidate();
+                MainPanel.add(DataMenuMinuman);
+                MainPanel.repaint();
+                MainPanel.revalidate();
+                loadData();
+            }
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRow = DataMinuman.getSelectedRow();
+        if (selectedRow != -1) {
+            int option = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                mnm.deleteData((int) DataMinuman.getValueAt(selectedRow, 0));
+                loadData();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Pilih data yang akan dihapus!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    
+    public void loadData() {
+        table.getDataVector().removeAllElements();
+        table.fireTableDataChanged();
+        mnm.loadData(table);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DataMenuMinuman;
@@ -363,13 +500,13 @@ public class Menu_Minuman extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField tvHarga;
+    private javax.swing.JTextField tvHarga1;
+    private javax.swing.JTextField tvId;
+    private javax.swing.JTextField tvKategori;
+    private javax.swing.JTextField tvNama;
+    private javax.swing.JTextField tvNama1;
+    private javax.swing.JTextField tvStok;
+    private javax.swing.JTextField tvStok1;
     // End of variables declaration//GEN-END:variables
 }
