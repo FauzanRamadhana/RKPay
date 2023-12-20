@@ -9,7 +9,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import menu.Meja;
+import menu.Meja_Kasir;
+import menu.Menu_Makanan_Kasir;
 import menu.Menu_Minuman;
+import menu.Menu_Minuman_Kasir;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -192,19 +195,19 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
 
         MenuItem makanan = new MenuItem(null, true, iconSub, "Makanan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Menu_Makanan());
+            pn_utama.add(new Menu_Makanan_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
         MenuItem minuman = new MenuItem(null, true, iconSub, "Minuman", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Menu_Minuman());
+            pn_utama.add(new Menu_Minuman_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
         MenuItem meja = new MenuItem(null, true, iconSub, "Meja", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Meja());
+            pn_utama.add(new Meja_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
