@@ -115,14 +115,14 @@ public class Menu_Makanan extends javax.swing.JPanel {
             .addGroup(DataMenuMakananLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DataMenuMakananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(DataMenuMakananLayout.createSequentialGroup()
                         .addComponent(btnTambah)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(btnDelete)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DataMenuMakananLayout.setVerticalGroup(
             DataMenuMakananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +134,7 @@ public class Menu_Makanan extends javax.swing.JPanel {
                     .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         MainPanel.add(DataMenuMakanan, "card2");
@@ -176,6 +176,11 @@ public class Menu_Makanan extends javax.swing.JPanel {
         jLabel1.setText("Nama Makanan");
 
         tvStok.setText("0");
+        tvStok.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tvStokFocusGained(evt);
+            }
+        });
         tvStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tvStokActionPerformed(evt);
@@ -187,6 +192,11 @@ public class Menu_Makanan extends javax.swing.JPanel {
         jLabel3.setText("Harga");
 
         tvHarga.setText("0");
+        tvHarga.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tvHargaFocusGained(evt);
+            }
+        });
         tvHarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tvHargaActionPerformed(evt);
@@ -481,6 +491,14 @@ public class Menu_Makanan extends javax.swing.JPanel {
     private void tvKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvKategoriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tvKategoriActionPerformed
+
+    private void tvStokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tvStokFocusGained
+
+    }//GEN-LAST:event_tvStokFocusGained
+
+    private void tvHargaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tvHargaFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tvHargaFocusGained
 
     public void loadData() {
         table.getDataVector().removeAllElements();

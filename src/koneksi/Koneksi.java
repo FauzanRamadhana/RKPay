@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Koneksi {
-    private static final String DB_URL = "jdbc:mysql://localhost:3308/RKPay";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/rkpay";
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "";
 

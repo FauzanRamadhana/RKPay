@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import menu.Menu_Meja;
+import menu.Meja;
 import menu.Menu_Minuman;
 
 /*
@@ -23,7 +23,7 @@ public class Main_Menu extends javax.swing.JFrame {
 
     public Main_Menu() {
         initComponents();
-//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setSize(1200, 600);
         execute();
     }
 
@@ -45,6 +45,7 @@ public class Main_Menu extends javax.swing.JFrame {
         pn_utama = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1500, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -202,7 +203,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         MenuItem meja = new MenuItem(null, true, iconSub, "Meja", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Menu_Meja());
+            pn_utama.add(new Meja());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
