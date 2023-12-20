@@ -1,4 +1,5 @@
 
+import Laporan.Laporan;
 import Transaksi.Transaksi;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import menu.Menu_Meja;
 import menu.Menu_Minuman;
 
 /*
@@ -90,7 +92,7 @@ public class Main_Menu extends javax.swing.JFrame {
         );
         pn_sideBarLayout.setVerticalGroup(
             pn_sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         getContentPane().add(pn_sideBar, java.awt.BorderLayout.LINE_START);
@@ -115,7 +117,23 @@ public class Main_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+//        form_Login loginForm = new form_Login();
+//
+//        // Set the login form to be visible
+//        loginForm.setVisible(true);
+//
+//        // Disable the visibility of the main menu temporarily
+//        this.setVisible(false);
+//
+//        // Add an ActionListener to the login form
+//        loginForm.addLoginSuccessListener((ActionEvent e) -> {
+//            // This will be executed when the user successfully logs in
+//            // Make the main menu visible again
+//            Main_Menu.this.setVisible(true);
+//
+//            // Dispose the login form if it's no longer needed
+//            loginForm.dispose();
+//        });
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -182,16 +200,27 @@ public class Main_Menu extends javax.swing.JFrame {
             pn_utama.repaint();
             pn_utama.revalidate();
         });
+        MenuItem meja = new MenuItem(null, true, iconSub, "Meja", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Menu_Meja());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
 
         MenuItem beranda = new MenuItem(iconBeranda, false, null, "Beranda", null);
-        MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null, makanan, minuman);
+        MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null, makanan, minuman, meja);
         MenuItem transaksi = new MenuItem(iconTransaksi, false, null, "Transaksi", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
             pn_utama.add(new Transaksi());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
-        MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", null);
+        MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Laporan());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
         MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

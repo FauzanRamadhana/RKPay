@@ -1,6 +1,7 @@
 
 import java.awt.Component;
 import java.awt.Window;
+import java.awt.event.ActionListener;
 import koneksi.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -245,4 +246,8 @@ public class form_Login extends javax.swing.JFrame {
     private javax.swing.JTextField logNama;
     private javax.swing.JPasswordField logPass;
     // End of variables declaration//GEN-END:variables
+
+    void addLoginSuccessListener(ActionListener actionListener) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
