@@ -19,11 +19,10 @@ import menu.Menu_Minuman;
  *
  * @author fauzanramadhana
  */
-public class Main_Menu extends javax.swing.JFrame {
+public class Main_Menu_KASIR extends javax.swing.JFrame {
 
-    public Main_Menu() {
+    public Main_Menu_KASIR() {
         initComponents();
-        this.setSize(1200, 600);
         execute();
     }
 
@@ -130,7 +129,7 @@ public class Main_Menu extends javax.swing.JFrame {
 //        loginForm.addLoginSuccessListener((ActionEvent e) -> {
 //            // This will be executed when the user successfully logs in
 //            // Make the main menu visible again
-//            Main_Menu.this.setVisible(true);
+//            Main_Menu_KASIR.this.setVisible(true);
 //
 //            // Dispose the login form if it's no longer needed
 //            loginForm.dispose();
@@ -154,20 +153,22 @@ public class Main_Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Main_Menu().setVisible(true);
+            new Main_Menu_KASIR().setVisible(true);
         });
     }
 

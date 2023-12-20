@@ -170,7 +170,7 @@ public class form_Login extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Berhasil login!");
-                Main_Menu mm = new Main_Menu();
+                Main_Menu_KASIR mm = new Main_Menu_KASIR();
                 Window currentWindow = SwingUtilities.windowForComponent((Component) evt.getSource());
                 currentWindow.dispose();
 
