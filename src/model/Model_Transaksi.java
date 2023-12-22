@@ -59,7 +59,7 @@ public class Model_Transaksi {
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
         try {
             Connection conn = Koneksi.getConnection();
-            String sql = "INSERT INTO transaksi (tgl_transaksi, mejaId, totalBayar, status) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO transaksi (tgl_transaksi, mejaId, totalBayar, status, userId) VALUES (?, ?, ?, ?, ?)";
             
             // Menggunakan Statement.RETURN_GENERATED_KEYS untuk mendapatkan kunci yang dihasilkan
             PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -67,6 +67,7 @@ public class Model_Transaksi {
             stmt.setInt(2, noMeja);
             stmt.setInt(3, totalBayar);
             stmt.setString(4, "Diproses");
+            stmt.setInt(5, User.getId());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -86,6 +87,7 @@ public class Model_Transaksi {
 
                             stmtDetailTransaksi.executeUpdate();
                             kurangiStokMenu(detail.getId(), detail.getJumlah());
+                            setMeja(noMeja);
                         }
                         JOptionPane.showMessageDialog(null, "Transaksi selesai!", "Info", JOptionPane.INFORMATION_MESSAGE);
                         stmtDetailTransaksi.close();
@@ -105,6 +107,16 @@ public class Model_Transaksi {
         try (PreparedStatement stmtUpdateStok = conn.prepareStatement(sqlUpdateStok)) {
             stmtUpdateStok.setInt(1, jumlah);
             stmtUpdateStok.setInt(2, idMenu);
+
+            stmtUpdateStok.executeUpdate();
+        }
+    }
+    
+    private void setMeja(int id) throws Exception{
+        Connection conn = Koneksi.getConnection();
+        String sqlSetMeja = "UPDATE meja SET status = 'Penuh' WHERE id = ?";
+        try (PreparedStatement stmtUpdateStok = conn.prepareStatement(sqlSetMeja)) {
+            stmtUpdateStok.setInt(1, id);
 
             stmtUpdateStok.executeUpdate();
         }

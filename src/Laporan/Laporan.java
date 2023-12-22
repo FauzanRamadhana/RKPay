@@ -4,17 +4,28 @@
  */
 package Laporan;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Model_Laporan;
+
 /**
  *
  * @author fauzanramadhana
  */
 public class Laporan extends javax.swing.JPanel {
 
+    private DefaultTableModel transaksi = new DefaultTableModel();
+    private DefaultTableModel detail_transaksi = new DefaultTableModel();
+    private Model_Laporan ml = new Model_Laporan();
+
     /**
      * Creates new form Laporan
      */
     public Laporan() {
         initComponents();
+        setupTransaksi();
+        setupDetailTransaksi();
+        update();
     }
 
     /**
@@ -28,12 +39,12 @@ public class Laporan extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Transaksi = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSelesai = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        DetailTransaksi = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(748, 403));
 
@@ -41,20 +52,20 @@ public class Laporan extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(106, 0, 4));
         jLabel1.setText("Laporan Transaksi");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Transaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "ID Transaksi", "ID Pesanan", "No Meja", "Total Bayar", "Status", "Tanggal Transaksi"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Transaksi);
 
         jPanel1.setBackground(new java.awt.Color(106, 0, 4));
 
@@ -62,14 +73,10 @@ public class Laporan extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Detail Transaksi");
 
-        jButton1.setBackground(new java.awt.Color(106, 0, 4));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("X");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSelesai.setText("Transaksi Selesai");
+        btnSelesai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSelesaiActionPerformed(evt);
             }
         });
 
@@ -81,8 +88,8 @@ public class Laporan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnSelesai)
+                .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,24 +97,24 @@ public class Laporan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(btnSelesai))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        DetailTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "ID Menu", "Nama Menu", "Harga", "Jumlah", "Subtotal", "Total Bayar"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(DetailTransaksi);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -128,7 +135,7 @@ public class Laporan extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,19 +143,61 @@ public class Laporan extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelesaiActionPerformed
+        int selectedRow = Transaksi.getSelectedRow();
+        if (selectedRow != -1) {
+            int idMeja = (int) Transaksi.getValueAt(selectedRow, 3);
+            int idTransaksi = (int) Transaksi.getValueAt(selectedRow, 0);
+            ml.updateMejaStatus(idMeja);
+            ml.updateTransaksiStatus(idTransaksi);
+            ml.loadDataTransaksi(transaksi);
+        } else {
+            JOptionPane.showMessageDialog(null, "Pilih data terlebih dahulu!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSelesaiActionPerformed
+
+    private void setupTransaksi() {
+        Transaksi.setModel(transaksi);
+        transaksi.addColumn("ID");
+        transaksi.addColumn("Tanggal Transaksi");
+        transaksi.addColumn("Status");
+        transaksi.addColumn("No Meja");
+        transaksi.addColumn("Total Bayar");
+        ml.loadDataTransaksi(transaksi);
+    }
+
+    private void setupDetailTransaksi() {
+        DetailTransaksi.setModel(detail_transaksi);
+        detail_transaksi.addColumn("ID");
+        detail_transaksi.addColumn("Nama Menu");
+        detail_transaksi.addColumn("Kategori");
+        detail_transaksi.addColumn("Harga");
+        detail_transaksi.addColumn("Jumlah");
+        detail_transaksi.addColumn("Sub Total");
+    }
+
+    private void update() {
+        Transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = Transaksi.rowAtPoint(evt.getPoint());
+                if (row >= 0) {
+                    int id = (int) Transaksi.getValueAt(row, 0);
+                    ml.loadDataDetail(detail_transaksi, id);
+                }
+            }
+        });
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable DetailTransaksi;
+    private javax.swing.JTable Transaksi;
+    private javax.swing.JButton btnSelesai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

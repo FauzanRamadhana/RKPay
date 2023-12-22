@@ -334,7 +334,7 @@ public class Transaksi extends javax.swing.JPanel {
 
         btnDone.setBackground(new java.awt.Color(106, 0, 4));
         btnDone.setForeground(new java.awt.Color(255, 255, 255));
-        btnDone.setText("Transaksi Selesai");
+        btnDone.setText("Pesanan Selesai");
         btnDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoneActionPerformed(evt);
