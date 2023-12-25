@@ -1,6 +1,6 @@
 package main_menu;
 
-
+import Beranda.Beranda;
 import form.Form_Login;
 import Laporan.Laporan;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menu.Meja;
 import menu.Menu_Minuman;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.Painter;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,7 +33,9 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
 
     public Main_Menu_ADMIN() {
         initComponents();
+//        customizeComponents();
         execute();
+        this.setSize(800, 650);
     }
 
     /**
@@ -37,6 +48,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
     private void initComponents() {
 
         pn_header = new javax.swing.JPanel();
+        jPanelGradient1 = new main_menu.JPanelGradient();
         jLabel1 = new javax.swing.JLabel();
         pn_sideBar = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -51,25 +63,39 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
             }
         });
 
-        pn_header.setBackground(new java.awt.Color(0, 0, 0));
+        pn_header.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanelGradient1.setColorEnd(new java.awt.Color(125, 0, 5));
+        jPanelGradient1.setColorStart(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Navbar (1).png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanelGradient1Layout = new javax.swing.GroupLayout(jPanelGradient1);
+        jPanelGradient1.setLayout(jPanelGradient1Layout);
+        jPanelGradient1Layout.setHorizontalGroup(
+            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelGradient1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addContainerGap(764, Short.MAX_VALUE))
+        );
+        jPanelGradient1Layout.setVerticalGroup(
+            jPanelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelGradient1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pn_headerLayout = new javax.swing.GroupLayout(pn_header);
         pn_header.setLayout(pn_headerLayout);
         pn_headerLayout.setHorizontalGroup(
             pn_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_headerLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addContainerGap(776, Short.MAX_VALUE))
+            .addComponent(jPanelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pn_headerLayout.setVerticalGroup(
             pn_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_headerLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(jPanelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(pn_header, java.awt.BorderLayout.PAGE_START);
@@ -81,6 +107,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
         jScrollPane1.setBorder(null);
 
         pn_menu.setBackground(new java.awt.Color(255, 255, 255));
+        pn_menu.setForeground(new java.awt.Color(125, 0, 5));
         pn_menu.setLayout(new javax.swing.BoxLayout(pn_menu, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(pn_menu);
 
@@ -88,11 +115,11 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
         pn_sideBar.setLayout(pn_sideBarLayout);
         pn_sideBarLayout.setHorizontalGroup(
             pn_sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         pn_sideBarLayout.setVerticalGroup(
             pn_sideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
         getContentPane().add(pn_sideBar, java.awt.BorderLayout.LINE_START);
@@ -115,6 +142,32 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(900, 578));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+//private void customizeComponents() {
+//    // Menyesuaikan warna gradien latar belakang pn_header
+//    pn_header.setOpaque(true);
+//    pn_header.setBackground( Color.BLACK); // Set alpha to 0 for transparency
+//
+//    // Menambahkan metode paintComponent untuk menggambar gradien
+//    pn_header = new JPanel() {
+//        @Override
+//        protected void paintComponent(Graphics g) {
+//            super.paintComponent(g);
+//
+//            // Membuat warna gradien dari putih (FFFFFF) ke merah tua (7D0005)
+//            GradientPaint gradient = new GradientPaint(
+//                0, 0, new Color(255, 255, 255), // Warna awal (putih)
+//                0, getHeight(), new Color(125, 0, 5) // Warna akhir (merah tua)
+//            );
+//
+//            // Menggunakan Graphics2D untuk menggambar gradien
+//            Graphics2D g2d = (Graphics2D) g;
+//            g2d.setPaint(gradient);
+//            g2d.fillRect(0, 0, getWidth(), getHeight());
+//        }
+//    };
+//
+//    // Tambahkan penyesuaian lainnya di sini
+//}
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 //        form_Login loginForm = new form_Login();
@@ -172,6 +225,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private main_menu.JPanelGradient jPanelGradient1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_header;
@@ -206,7 +260,12 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
             pn_utama.revalidate();
         });
 
-        MenuItem beranda = new MenuItem(iconBeranda, false, null, "Beranda", null);
+        MenuItem beranda = new MenuItem(iconBeranda, false, null, "Beranda", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Beranda());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
         MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null, makanan, minuman, meja);
         MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
@@ -214,22 +273,19 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
             pn_utama.repaint();
             pn_utama.revalidate();
         });
-        MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int option = JOptionPane.showConfirmDialog(
-                        null,
-                        "Apakah Anda yakin ingin keluar?",
-                        "Konfirmasi Keluar",
-                        JOptionPane.YES_NO_OPTION
-                );
-
-                // Check user's choice
-                if (option == JOptionPane.YES_OPTION) {
-                    Form_Login fl = new Form_Login();
-                    dispose();
-                    fl.setVisible(true);
-                }
+        MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", (ActionEvent e) -> {
+            int option = JOptionPane.showConfirmDialog(
+                    null,
+                    "Apakah Anda yakin ingin keluar?",
+                    "Konfirmasi Keluar",
+                    JOptionPane.YES_NO_OPTION
+            );
+            
+            // Check user's choice
+            if (option == JOptionPane.YES_OPTION) {
+                Form_Login fl = new Form_Login();
+                dispose();
+                fl.setVisible(true);
             }
         });
 
