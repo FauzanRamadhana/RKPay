@@ -34,8 +34,6 @@ public class MenuItem extends javax.swing.JPanel {
         
         lb_icon.setIcon(icon);
         lb_menuName.setText(menuName);
-        lb_iconSub.setIcon(iconSub);
-        lb_iconSub.setVisible(sbm);
         
         if (act != null) {
             this.act = act;
@@ -61,7 +59,6 @@ public class MenuItem extends javax.swing.JPanel {
 
         lb_menuName = new javax.swing.JLabel();
         lb_icon = new javax.swing.JLabel();
-        lb_iconSub = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,12 +69,6 @@ public class MenuItem extends javax.swing.JPanel {
 
         lb_menuName.setText("Menu Item...");
 
-        lb_iconSub.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lb_iconSubMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,9 +76,7 @@ public class MenuItem extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_iconSub, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lb_menuName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -96,16 +85,8 @@ public class MenuItem extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lb_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lb_menuName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lb_iconSub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lb_icon, lb_iconSub});
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lb_iconSubMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_iconSubMousePressed
-
-    }//GEN-LAST:event_lb_iconSubMousePressed
     
     private boolean showing = false;
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -124,7 +105,6 @@ public class MenuItem extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lb_icon;
-    private javax.swing.JLabel lb_iconSub;
     private javax.swing.JLabel lb_menuName;
     // End of variables declaration//GEN-END:variables
 

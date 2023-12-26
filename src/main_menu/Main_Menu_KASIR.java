@@ -33,9 +33,11 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
     public Main_Menu_KASIR() {
         initComponents();
         execute();
-        this.setSize(800, 650);
+        this.setSize(1200, 650);
 
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -162,41 +164,6 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
 //        });
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu_KASIR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Main_Menu_KASIR().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -210,26 +177,25 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void execute() {
-        ImageIcon iconBeranda = new ImageIcon(getClass().getResource("/image/home.png"));
-        ImageIcon iconMenu = new ImageIcon(getClass().getResource("/image/Menu.png"));
-        ImageIcon iconTransaksi = new ImageIcon(getClass().getResource("/image/transaksi.png"));
-        ImageIcon iconLaporan = new ImageIcon(getClass().getResource("/image/laporan.png"));
-        ImageIcon iconLogout = new ImageIcon(getClass().getResource("/image/logout.png"));
-        ImageIcon iconSub = new ImageIcon(getClass().getResource("/image/subIcon.png"));
+        ImageIcon iconBeranda = new ImageIcon(getClass().getClassLoader().getResource("image/home.png"));
+        ImageIcon iconMenu = new ImageIcon(getClass().getClassLoader().getResource("image/menu.png"));
+        ImageIcon iconTransaksi = new ImageIcon(getClass().getClassLoader().getResource("image/transaksi.png"));
+        ImageIcon iconLaporan = new ImageIcon(getClass().getClassLoader().getResource("image/laporan.png"));
+        ImageIcon iconLogout = new ImageIcon(getClass().getClassLoader().getResource("image/logout.png"));
 
-        MenuItem makanan = new MenuItem(null, true, iconSub, "Makanan", (ActionEvent e) -> {
+        MenuItem makanan = new MenuItem(null, true, null, "Makanan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
             pn_utama.add(new Menu_Makanan_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
-        MenuItem minuman = new MenuItem(null, true, iconSub, "Minuman", (ActionEvent e) -> {
+        MenuItem minuman = new MenuItem(null, true, null, "Minuman", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
             pn_utama.add(new Menu_Minuman_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
-        MenuItem meja = new MenuItem(null, true, iconSub, "Meja", (ActionEvent e) -> {
+        MenuItem meja = new MenuItem(null, true, null, "Meja", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
             pn_utama.add(new Meja_Kasir());
             pn_utama.repaint();
