@@ -4,17 +4,26 @@
  */
 package Kasir;
 
+import javax.swing.table.DefaultTableModel;
+import model.User;
+
 /**
  *
  * @author fauzanramadhana
  */
 public class Kasir extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Kasir
-     */
+    private DefaultTableModel table;
     public Kasir() {
         initComponents();
+        table = new DefaultTableModel();
+        dataKasir.setModel(table);
+
+        table.addColumn("ID");
+        table.addColumn("Nama");
+        table.addColumn("Telepon");
+        table.addColumn("Role");
+        loadData();
     }
 
     /**
@@ -27,9 +36,9 @@ public class Kasir extends javax.swing.JPanel {
     private void initComponents() {
 
         MainPanel = new javax.swing.JPanel();
-        dataKasir = new javax.swing.JPanel();
+        JPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        dataKasir = new javax.swing.JTable();
 
         setLayout(new java.awt.CardLayout());
 
@@ -37,46 +46,51 @@ public class Kasir extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 300));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dataKasir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(dataKasir);
 
-        javax.swing.GroupLayout dataKasirLayout = new javax.swing.GroupLayout(dataKasir);
-        dataKasir.setLayout(dataKasirLayout);
-        dataKasirLayout.setHorizontalGroup(
-            dataKasirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dataKasirLayout.createSequentialGroup()
+        javax.swing.GroupLayout JPanelLayout = new javax.swing.GroupLayout(JPanel);
+        JPanel.setLayout(JPanelLayout);
+        JPanelLayout.setHorizontalGroup(
+            JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(217, Short.MAX_VALUE))
         );
-        dataKasirLayout.setVerticalGroup(
-            dataKasirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dataKasirLayout.createSequentialGroup()
+        JPanelLayout.setVerticalGroup(
+            JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        MainPanel.add(dataKasir, "card2");
+        MainPanel.add(JPanel, "card2");
 
         add(MainPanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void loadData() {
+        table.getDataVector().removeAllElements();
+        table.fireTableDataChanged();
+        User.loadDataKasir(table);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanel;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JPanel dataKasir;
+    private javax.swing.JTable dataKasir;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

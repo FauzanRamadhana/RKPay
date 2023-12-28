@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
 
 /**
@@ -79,5 +80,25 @@ public class User {
             JOptionPane.showMessageDialog(null, "Konfirmasi password tidak sesuai!");
         }
         return i;
+    }
+    
+    public static void loadDataKasir (DefaultTableModel table){
+        try {
+            Connection conn = Koneksi.getConnection();
+            String sql = "SELECT * FROM users WHERE role = 'Kasir'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nama = rs.getString("nama");
+                String telepon = rs.getString("telepon");
+                String role = rs.getString("role");
+
+                Object display[] = {id, nama, telepon, role};
+                table.addRow(display);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
     }
 }
