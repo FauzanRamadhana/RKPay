@@ -1,6 +1,7 @@
 package main_menu;
 
 import Beranda.Beranda;
+import Kasir.Kasir;
 import Laporan.Laporan_Admin;
 import form.Form_Login;
 import Laporan.Laporan_Kasir;
@@ -211,6 +212,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
         ImageIcon iconMenu = new ImageIcon(getClass().getClassLoader().getResource("image/menu.png"));
         ImageIcon iconLaporan = new ImageIcon(getClass().getClassLoader().getResource("image/laporan.png"));
         ImageIcon iconLogout = new ImageIcon(getClass().getClassLoader().getResource("image/logout.png"));
+        ImageIcon iconKasir = new ImageIcon(getClass().getClassLoader().getResource("image/person.png"));
 
         MenuItem makanan = new MenuItem(null, true, null, "Makanan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
@@ -244,6 +246,12 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
             pn_utama.repaint();
             pn_utama.revalidate();
         });
+        MenuItem kasir = new MenuItem(iconKasir, false, null, "Kasir", (ActionEvent e) -> {
+            pn_utama.removeAll(); // Clear existing components
+            pn_utama.add(new Kasir());
+            pn_utama.repaint();
+            pn_utama.revalidate();
+        });
         MenuItem logout = new MenuItem(iconLogout, false, null, "Keluar", (ActionEvent e) -> {
             int option = JOptionPane.showConfirmDialog(
                     null,
@@ -260,7 +268,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
             }
         });
 
-        addMenu(beranda, menu, laporan, logout);
+        addMenu(beranda, menu, laporan, kasir, logout);
 
     }
 
