@@ -1,8 +1,9 @@
 package main_menu;
 
 import Beranda.Beranda;
+import Laporan.Laporan_Admin;
 import form.Form_Login;
-import Laporan.Laporan;
+import Laporan.Laporan_Kasir;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import menu.Menu_Makanan;
@@ -36,8 +37,11 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
 //        customizeComponents();
         execute();
         this.setSize(800, 650);
+        pn_utama.removeAll(); // Clear existing components
+        pn_utama.add(new Beranda());
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,7 +240,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
         MenuItem menu = new MenuItem(iconMenu, false, null, "Menu", null, makanan, minuman, meja);
         MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Laporan());
+            pn_utama.add(new Laporan_Admin());
             pn_utama.repaint();
             pn_utama.revalidate();
         });
@@ -247,7 +251,7 @@ public class Main_Menu_ADMIN extends javax.swing.JFrame {
                     "Konfirmasi Keluar",
                     JOptionPane.YES_NO_OPTION
             );
-            
+
             // Check user's choice
             if (option == JOptionPane.YES_OPTION) {
                 Form_Login fl = new Form_Login();

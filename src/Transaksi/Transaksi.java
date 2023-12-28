@@ -482,11 +482,17 @@ public class Transaksi extends javax.swing.JPanel {
             ListMenu.setValueAt(jumlah, selectedRow, 4);
             ListMenu.setValueAt(subTotal, selectedRow, 5);
 
+            // Recalculate the total inside the loop
+            total = 0;
+            for (Model_Transaksi mt : list) {
+                total += mt.getSubTotal();
+            }
+            tvTotal.setText(String.valueOf(total));
+
             JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
         } else {
             JOptionPane.showMessageDialog(null, "Pilih data yang akan diperbarui!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-
     }//GEN-LAST:event_btnPerbaruiActionPerformed
 
     private void tvKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvKategoriActionPerformed

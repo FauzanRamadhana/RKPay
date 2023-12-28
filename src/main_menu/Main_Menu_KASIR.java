@@ -2,7 +2,7 @@ package main_menu;
 
 import Beranda.Beranda;
 import form.Form_Login;
-import Laporan.Laporan;
+import Laporan.Laporan_Kasir;
 import Transaksi.Transaksi;
 import java.awt.Component;
 import java.awt.Window;
@@ -34,10 +34,11 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
         initComponents();
         execute();
         this.setSize(1200, 650);
-
+        pn_utama.removeAll(); // Clear existing components
+        pn_utama.add(new Beranda());
+        pn_utama.repaint();
+        pn_utama.revalidate();
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,7 +218,7 @@ public class Main_Menu_KASIR extends javax.swing.JFrame {
         });
         MenuItem laporan = new MenuItem(iconLaporan, false, null, "Laporan", (ActionEvent e) -> {
             pn_utama.removeAll(); // Clear existing components
-            pn_utama.add(new Laporan());
+            pn_utama.add(new Laporan_Kasir());
             pn_utama.repaint();
             pn_utama.revalidate();
         });

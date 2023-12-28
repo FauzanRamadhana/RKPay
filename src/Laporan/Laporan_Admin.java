@@ -12,7 +12,7 @@ import model.Model_Laporan;
  *
  * @author fauzanramadhana
  */
-public class Laporan extends javax.swing.JPanel {
+public class Laporan_Admin extends javax.swing.JPanel {
 
     private DefaultTableModel transaksi = new DefaultTableModel();
     private DefaultTableModel detail_transaksi = new DefaultTableModel();
@@ -21,7 +21,7 @@ public class Laporan extends javax.swing.JPanel {
     /**
      * Creates new form Laporan
      */
-    public Laporan() {
+    public Laporan_Admin() {
         initComponents();
         setupTransaksi();
         setupDetailTransaksi();
@@ -42,7 +42,6 @@ public class Laporan extends javax.swing.JPanel {
         Transaksi = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnSelesai = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         DetailTransaksi = new javax.swing.JTable();
 
@@ -73,13 +72,6 @@ public class Laporan extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Detail Transaksi");
 
-        btnSelesai.setText("Transaksi Selesai");
-        btnSelesai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelesaiActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -87,18 +79,14 @@ public class Laporan extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSelesai)
-                .addGap(38, 38, 38))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnSelesai))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         DetailTransaksi.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,19 +131,6 @@ public class Laporan extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelesaiActionPerformed
-        int selectedRow = Transaksi.getSelectedRow();
-        if (selectedRow != -1) {
-            int idMeja = (int) Transaksi.getValueAt(selectedRow, 3);
-            int idTransaksi = (int) Transaksi.getValueAt(selectedRow, 0);
-            ml.updateMejaStatus(idMeja);
-            ml.updateTransaksiStatus(idTransaksi);
-            ml.loadDataTransaksi(transaksi);
-        } else {
-            JOptionPane.showMessageDialog(null, "Pilih data terlebih dahulu!", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnSelesaiActionPerformed
-
     private void setupTransaksi() {
         Transaksi.setModel(transaksi);
         transaksi.addColumn("ID");
@@ -193,7 +168,6 @@ public class Laporan extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DetailTransaksi;
     private javax.swing.JTable Transaksi;
-    private javax.swing.JButton btnSelesai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
